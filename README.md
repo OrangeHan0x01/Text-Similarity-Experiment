@@ -1,3 +1,5 @@
+简体中文 | [English](README_en.md)
+
 使用数据集均来自千言官网：https://www.luge.ai/#/
 
 主要数据集是文本相似度的oppo数据集和lcqmc数据集；
@@ -66,7 +68,7 @@ sim_utils.py:包括各类对两个数据集进行处理的函数，包括文本�
 
 createvecs_lc.py:可运行，将原本数据集在文件夹下创建为向量数据集，如果数据集不同需要换一个函数。耗费时间较长（和bert在该数据集上训练一个epoch的时间差不多）
 
-bestfunc_intrainset.py:可运行，使用scipy.optimize.minimize的单纯形法方法进行优化，得到一个最佳相似度，超过这个相似度的两个句子被认为是相似，反之不相似。
+bestfunc_intrainset.py:可运行，使用scipy.optimize.minimize的Nelder-Mead方法进行优化，得到一个最佳相似度，超过这个相似度的两个句子被认为是相似，反之不相似。
 		该文件末尾有对于各个数据集的结果，在lcqmc的训练集上准确率约87.3%，在验证集上使用训练集的最佳x值时准确率约78.1%，直接求最佳约80.0%
 
 bert_test.py:可运行，该文件用的是oppo数据集，直接使用bert来做文本相似度预测。验证集准确率和Chinese-BERT-wwm官方公布的直接用bert的run_classifier.py的lcqmc数据集结果应该没什么差距。这里我没有做完，我用oppo数据集训练后开发集准确率约86%，但是lcqmc数据集太大了，我的笔记本发热严重，训练一个epoch就要3-4小时（第一个epoch训练完后在开发集上准确率也是约86%）。建议用户使用散热好的台式机，然后去掉代码中的sleep语句。训练oppo数据集时可以增加batch数降低max_len以加快训练速度。
